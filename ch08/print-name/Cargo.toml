@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "print_name",
+    "print_name_derive"
+]
