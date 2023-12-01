@@ -1,6 +1,7 @@
 use lazy_static::lazy_static;
 use once_cell::sync::Lazy;
 use static_init::dynamic;
+use std::cell::OnceCell;
 use std::sync::{Arc, Mutex};
 
 thread_local! {
@@ -45,6 +46,15 @@ fn main() {
         String::from("Emma"),
         String::from("Noah"),
     ]);
+    let popular_baby_names_2017: OnceCell<Vec<String>> = OnceCell::new();
+    popular_baby_names_2017.get_or_init(|| {
+        vec![
+            String::from("Emma"),
+            String::from("Liam"),
+            String::from("Olivia"),
+            String::from("Noah"),
+        ]
+    });
 
     println!("popular baby names of 2021: {:?}", *inner);
 
@@ -53,4 +63,9 @@ fn main() {
     println!("popular baby names of 2019: {:?}", *POPULAR_BABY_NAMES_2019);
 
     println!("popular baby names of 2018: {:?}", *POPULAR_BABY_NAMES_2018);
+
+    println!(
+        "popular baby names of 2017: {:?}",
+        popular_baby_names_2017.get()
+    );
 }

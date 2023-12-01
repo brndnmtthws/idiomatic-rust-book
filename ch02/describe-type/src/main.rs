@@ -6,8 +6,8 @@ fn describe_type<T: SelfDescribing>() -> String {
     T::describe()
 }
 
-struct Dog();
-struct Cat();
+struct Dog;
+struct Cat;
 
 impl SelfDescribing for Dog {
     fn describe() -> String {

@@ -18,7 +18,7 @@ impl Default for Pumpkin {
 fn main() {
     let big_pumpkin = Pumpkin {
         mass: 50.,
-        diameter: 50.,
+        diameter: 75.,
     };
     println!("Big pumpkin: {:?}", big_pumpkin);
     println!("Cloned big pumpkin: {:?}", big_pumpkin.clone());

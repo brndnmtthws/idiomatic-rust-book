@@ -35,7 +35,7 @@ fn match_with_guard(value: i32) {
     match value {
         v if v == 1 => println!("This value is equal to 1"),
         v if v < 10 => println!("This value is less than 10"),
-        _ => println!("This value is more than 10, or less than 1"),
+        _ => println!("This value is at least 10, or less than 1"),
     }
 }
 
@@ -128,9 +128,12 @@ fn write_to_file_without_result() {
             Err(err) => {
                 println!("There was an error writing: {}", err.to_string())
             }
-            _ => (),
+            _ => println!("Write suceeded"),
         },
-        Err(err) => println!("There was an error opening the file: {}", err.to_string()),
+        Err(err) => println!(
+            "There was an error opening the file: {}",
+            err.to_string()
+        ),
     }
 }
 
