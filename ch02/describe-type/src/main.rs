@@ -11,7 +11,7 @@ struct Cat;
 
 impl SelfDescribing for Dog {
     fn describe() -> String {
-        "happy little dog".into()
+        "happy little dog".into()   // this is first  comment 
     }
 }
 
