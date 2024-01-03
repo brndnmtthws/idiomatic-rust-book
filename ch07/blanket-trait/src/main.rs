@@ -1,6 +1,7 @@
 trait Blanket {}
 impl<T> Blanket for T {}
 
+#[derive(Debug)]
 struct Buffer<T, const LENGTH: usize> {
     buf: [T; LENGTH],
 }
@@ -19,5 +20,16 @@ impl<T: Default + Copy, const LENGTH: usize> From<Vec<T>>
 }
 
 fn main() {
-    println!("Hello, world!");
+    let group_of_seven = vec![
+        "Canada",
+        "France",
+        "Germany",
+        "Italy",
+        "Japan",
+        "United Kingdom",
+        "United States",
+        "European Union",
+    ];
+    let g7_buf: Buffer<&str, 8> = Buffer::from(group_of_seven);
+    dbg!(&g7_buf);
 }

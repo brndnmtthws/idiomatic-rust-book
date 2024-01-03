@@ -41,20 +41,20 @@ impl StudentList {
 }
 
 impl<'a> StudentList {
+    fn find<F: Fn(&&Student) -> bool>(
+        &'a self,
+        pred: F,
+    ) -> Option<StudentRef<'a>> {
+        self.students.iter().find(pred).map(Student::to_ref)
+    }
     pub fn find_student_by_id(&'a self, id: u32) -> Option<StudentRef<'a>> {
-        self.students
-            .iter()
-            .find(|s| s.id() == id)
-            .map(Student::to_ref)
+        self.find(|s| s.id() == id)
     }
     pub fn find_student_by_name(
         &'a self,
         name: &str,
     ) -> Option<StudentRef<'a>> {
-        self.students
-            .iter()
-            .find(|s| s.name() == name)
-            .map(Student::to_ref)
+        self.find(|s| s.name() == name)
     }
 }
 
