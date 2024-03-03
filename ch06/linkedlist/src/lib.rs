@@ -2,8 +2,8 @@
 //!
 //! This crate provides a simple linked list implementation.
 //!
-//! The crates serves as a teaching example for the book [_Code Like a Pro in
-//! Rust_](https://www.manning.com/books/code-like-a-pro-in-rust).
+//! The crates serves as a teaching example for the book [_Rust Design
+//! Patterns_](https://www.manning.com/books/rust-design-patterns).
 //!
 //! ## Example usage
 //!
@@ -104,7 +104,8 @@ pub struct Iter<'a, T> {
     data: Option<ItemData<T>>,
     phantom: PhantomData<&'a T>,
 }
-/// Provides an iterator with mutability over `&mut T` for [`LinkedList<T>`].
+/// Provides an iterator with mutability over `&mut T` for
+/// [`LinkedList<T>`].
 pub struct IterMut<'a, T> {
     next: Option<ListItemPtr<T>>,
     data: Option<ItemData<T>>,
