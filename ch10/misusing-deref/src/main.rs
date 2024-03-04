@@ -1,8 +1,8 @@
 use std::ops::Deref;
 
-struct Name(String);
+struct Person(String, String, u32);
 
-impl Deref for Name {
+impl Deref for Person {
     type Target = String;
 
     fn deref(&self) -> &Self::Target {
@@ -11,7 +11,7 @@ impl Deref for Name {
 }
 
 fn main() {
-    let name = Name("Ferris".to_string());
-    println!("Hello, {}!", *name);
-    println!("The length of the name is {}", name.len());
+    let ferris = Person("Ferris".to_string(), "Bueller".to_string(), 17);
+    println!("Hello, {}!", *ferris);
+    println!("The length of a person is {}", ferris.len());
 }
