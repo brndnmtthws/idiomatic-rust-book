@@ -126,13 +126,13 @@ fn write_to_file_without_result() {
     match create_result {
         Ok(mut file) => match file.write_all(b"File contents") {
             Err(err) => {
-                println!("There was an error writing: {}", err.to_string())
+                println!("There was an error writing: {}", err)
             }
             _ => println!("Write suceeded"),
         },
         Err(err) => println!(
             "There was an error opening the file: {}",
-            err.to_string()
+            err
         ),
     }
 }
