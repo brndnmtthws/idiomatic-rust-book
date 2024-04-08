@@ -131,7 +131,7 @@ impl<'a, T> IntoIterator for &'a mut LinkedList<T> {
         self.iter_mut()
     }
 }
-impl<'a, T> IntoIterator for LinkedList<T> {
+impl<T> IntoIterator for LinkedList<T> {
     type IntoIter = IntoIter<T>;
     type Item = T;
     fn into_iter(self) -> Self::IntoIter {
