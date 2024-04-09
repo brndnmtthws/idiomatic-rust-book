@@ -1,6 +1,6 @@
 fn some_or_none<T>(option: &Option<T>) {
     match option {
-        Some(v) => println!("is some!"),
+        Some(_v) => println!("is some!"),
         None => println!("is none :("),
     }
 }
@@ -130,10 +130,9 @@ fn write_to_file_without_result() {
             }
             _ => println!("Write suceeded"),
         },
-        Err(err) => println!(
-            "There was an error opening the file: {}",
-            err
-        ),
+        Err(err) => {
+            println!("There was an error opening the file: {}", err)
+        }
     }
 }
 

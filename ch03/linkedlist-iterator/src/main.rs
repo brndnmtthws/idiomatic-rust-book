@@ -35,7 +35,8 @@ impl<T> LinkedList<T> {
             let n = next.as_ref().borrow().next.as_ref().unwrap().clone();
             next = n;
         }
-        next.as_ref().borrow_mut().next = Some(Rc::new(RefCell::new(ListItem::new(t))));
+        next.as_ref().borrow_mut().next =
+            Some(Rc::new(RefCell::new(ListItem::new(t))));
     }
     fn iter(&self) -> Iter<T> {
         Iter {
@@ -77,7 +78,7 @@ impl<'a, T> Iterator for Iter<'a, T> {
     fn next(&mut self) -> Option<Self::Item> {
         match self.next.clone() {
             Some(ptr) => {
-                self.next = ptr.as_ref().borrow().next.clone();
+                self.next.clone_from(&ptr.as_ref().borrow().next);
                 self.data = Some(ptr.as_ref().borrow().data.clone());
                 unsafe { Some(&*self.data.as_ref().unwrap().as_ptr()) }
             }
@@ -90,7 +91,7 @@ impl<'a, T> Iterator for IterMut<'a, T> {
     fn next(&mut self) -> Option<Self::Item> {
         match self.next.clone() {
             Some(ptr) => {
-                self.next = ptr.as_ref().borrow().next.clone();
+                self.next.clone_from(&ptr.as_ref().borrow().next);
                 self.data = Some(ptr.as_ref().borrow().data.clone());
                 unsafe { Some(&mut *self.data.as_ref().unwrap().as_ptr()) }
             }
@@ -103,8 +104,9 @@ impl<T> Iterator for IntoIter<T> {
     fn next(&mut self) -> Option<Self::Item> {
         match self.next.clone() {
             Some(ptr) => {
-                self.next = ptr.as_ref().borrow().next.clone();
-                let listitem = Rc::try_unwrap(ptr).map(|refcell| refcell.into_inner());
+                self.next.clone_from(&ptr.as_ref().borrow().next);
+                let listitem =
+                    Rc::try_unwrap(ptr).map(|refcell| refcell.into_inner());
                 match listitem {
                     Ok(listitem) => Rc::try_unwrap(listitem.data)
                         .map(|refcell| refcell.into_inner())
