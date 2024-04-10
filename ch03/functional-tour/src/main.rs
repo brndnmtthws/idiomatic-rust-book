@@ -1,7 +1,7 @@
 use std::collections::LinkedList;
 
 fn main() {
-    let vec = vec![1, 2, 3, 4];
+    let vec = [1, 2, 3, 4];
     println!("{:?}", vec);
     let vec: Vec<_> = vec.iter().map(|v| v.to_string()).collect();
     println!("{:?}", vec);
@@ -10,7 +10,7 @@ fn main() {
         vec.iter().flat_map(|v| v.parse::<i32>()).collect();
     println!("{:?}", linkedlist);
 
-    let vec = vec!["duck", "1", "2", "goose", "3", "4"];
+    let vec = ["duck", "1", "2", "goose", "3", "4"];
     let (successes, failures): (Vec<_>, Vec<_>) = vec
         .iter()
         .map(|v| v.parse::<i32>())
