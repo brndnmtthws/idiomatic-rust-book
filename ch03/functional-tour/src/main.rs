@@ -1,17 +1,17 @@
 use std::collections::LinkedList;
 
 fn main() {
-    let vec = [1, 2, 3, 4];
-    println!("{:?}", vec);
-    let vec: Vec<_> = vec.iter().map(|v| v.to_string()).collect();
+    let arr = [1, 2, 3, 4];
+    println!("{:?}", arr);
+    let vec: Vec<_> = arr.iter().map(|v| v.to_string()).collect();
     println!("{:?}", vec);
 
     let linkedlist: LinkedList<i32> =
         vec.iter().flat_map(|v| v.parse::<i32>()).collect();
     println!("{:?}", linkedlist);
 
-    let vec = ["duck", "1", "2", "goose", "3", "4"];
-    let (successes, failures): (Vec<_>, Vec<_>) = vec
+    let arr = ["duck", "1", "2", "goose", "3", "4"];
+    let (successes, failures): (Vec<_>, Vec<_>) = arr
         .iter()
         .map(|v| v.parse::<i32>())
         .partition(Result::is_ok);
