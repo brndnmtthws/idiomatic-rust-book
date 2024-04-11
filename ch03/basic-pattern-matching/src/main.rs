@@ -5,6 +5,13 @@ fn some_or_none<T>(option: &Option<T>) {
     }
 }
 
+fn some_or_none_display<T: std::fmt::Display>(option: &Option<T>) {
+    match option {
+        Some(v) => println!("is some! where v={v}"),
+        None => println!("is none :("),
+    }
+}
+
 fn what_type_of_integer_is_this(value: i32) {
     match value {
         1 => println!("The number one number"),
