@@ -1,5 +1,6 @@
 #![feature(coroutines, coroutine_trait)]
 
+use core::f64::consts::PI;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader};
 use std::ops::{Coroutine, CoroutineState};
@@ -41,7 +42,7 @@ impl Iterator for CargoTomlReader {
 
 fn main() -> io::Result<()> {
     let mut yield_pi = || {
-        yield 3.14;
+        yield PI;
         return "Coroutine complete!";
     };
 

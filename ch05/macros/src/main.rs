@@ -1,4 +1,5 @@
 // #![feature(trace_macros)]
+use core::f64::consts::PI;
 
 macro_rules! noop_macro {
     () => {};
@@ -87,7 +88,7 @@ fn main() {
     special_println!("with an argument of {}", 5);
 
     let counter = 7;
-    let gauge = 3.14;
+    let gauge = PI;
     let name = "Peter";
     var_print!(counter, gauge, name);
 

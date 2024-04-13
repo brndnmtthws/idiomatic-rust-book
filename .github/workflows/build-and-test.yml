@@ -1,0 +1,38 @@
+name: Build & test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        rust:
+          - nightly
+        os:
+          - ubuntu-latest
+          - macos-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup ${{ matrix.rust }} Rust toolchain with caching
+        uses: brndnmtthws/rust-action@v1
+        with:
+          toolchain: ${{ matrix.rust }}
+          cargo-packages: cargo-recursive
+      - run: cargo recursive -e build
+      - run: cargo recursive -e test
+        env:
+          RUST_BACKTRACE: 1
+      - run: cargo recursive -e fmt -- --all -- --check
+      - run: cargo recursive -e clippy
