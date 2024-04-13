@@ -1,7 +1,7 @@
-fn main() {
-    use std::sync::{Arc, Condvar, Mutex};
-    use std::thread;
+use std::sync::{Arc, Condvar, Mutex};
+use std::thread;
 
+fn main() {
     let outer = Arc::new((Mutex::new(0), Condvar::new()));
     let inner = outer.clone();
 
