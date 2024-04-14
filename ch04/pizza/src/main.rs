@@ -35,5 +35,5 @@ fn main() {
         String::from("mozzarella"),
         String::from("pepperoni"),
     ]);
-    println!("pizza={:?}", pizza);
+    println!("pizza={:#?}", pizza);
 }
