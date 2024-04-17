@@ -21,10 +21,11 @@ fn read_nth_line(path: &Path, n: usize) -> Result<String, Error> {
     let file = File::open(path)?;
 
     let mut reader_lines = BufReader::new(file).lines();
-    reader_lines
-        .nth(n - 1)
-        .map(|result| result.map_err(|err| err.into()))
-        .unwrap_or_else(|| Err(Error::BadLineArgument(n)))
+    if let Some(line) = reader_lines.nth(n - 1) {
+        line.map_err(|err| err.into())
+    } else {
+        Err(Error::BadLineArgument(n))
+    }
 }
 
 fn main() -> Result<(), Error> {
