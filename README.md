@@ -170,7 +170,7 @@ This repository contains the source code for [_Rust Design Patterns_](https://ww
 #### 10.4
 
 * [vec-benchmark](ch10/vec-benchmark/)
-* [basic-banch](ch10/basic-bench/)
+* [basic-bench](ch10/basic-bench/)
 
 #### 10.6
 
