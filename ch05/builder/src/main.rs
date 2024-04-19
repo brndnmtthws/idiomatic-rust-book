@@ -91,5 +91,5 @@ fn main() {
     bicycle_builder.with_size(46);
     bicycle_builder.with_colour("red");
     let bicycle = bicycle_builder.build();
-    println!("My new bike: {:?}", bicycle);
+    println!("My new bike: {:#?}", bicycle);
 }
