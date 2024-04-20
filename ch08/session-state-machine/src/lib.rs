@@ -75,7 +75,7 @@ impl Session<Anonymous> {
 }
 
 impl Session<Authenticated> {
-    fn update_property(&mut self, key: &str, value: &str) {
+    pub fn update_property(&mut self, key: &str, value: &str) {
         if let Some(prop) = self.props.get_mut(key) {
             *prop = value.to_string();
         } else {
@@ -83,7 +83,7 @@ impl Session<Authenticated> {
         }
         // Store props in DB
     }
-    fn logout(self) -> Session<LoggedOut> {
+    pub fn logout(self) -> Session<LoggedOut> {
         // Delete session from DB
         Session {
             session_id: Uuid::nil(),
