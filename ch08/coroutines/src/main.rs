@@ -43,7 +43,7 @@ impl Iterator for CargoTomlReader {
 fn main() -> io::Result<()> {
     let mut yield_pi = || {
         yield PI;
-        return "Coroutine complete!";
+        "Coroutine complete!"
     };
 
     loop {
