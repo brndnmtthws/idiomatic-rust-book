@@ -3,3 +3,4 @@ members = [
     "print_name",
     "print_name_derive"
 ]
+resolver = "2"
