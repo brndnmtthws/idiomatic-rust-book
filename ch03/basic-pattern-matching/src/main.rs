@@ -33,7 +33,7 @@ fn destructure_tuple(tuple: &(i32, i32, i32)) {
     }
     match tuple {
         (first, middle, last) => {
-            println!("The whole tuple is ({first}, {middle}, {last}")
+            println!("The whole tuple is ({first}, {middle}, {last})")
         }
     }
 }
@@ -143,7 +143,31 @@ fn write_to_file_without_result() {
     }
 }
 
-fn main() {}
+fn main() {
+    some_or_none(&Some(()));
+    some_or_none::<()>(&None);
+
+    some_or_none_display(&Some(1));
+    some_or_none_display::<i32>(&None);
+
+    what_type_of_integer_is_this(1);
+    what_type_of_integer_is_this(2);
+    what_type_of_integer_is_this(10);
+    what_type_of_integer_is_this(42);
+
+    destructure_tuple(&(1, 2, 3));
+
+    match_with_guard(1);
+    match_with_guard(2);
+    match_with_guard(42);
+
+    match_enum_types(&DistinctTypes::Name("Alice".into()));
+    match_enum_types(&DistinctTypes::Name("Bob".into()));
+    match_enum_types(&DistinctTypes::Count(10_000));
+
+    try_to_write_to_file();
+    write_to_file_without_result();
+}
 
 #[cfg(test)]
 mod tests {
