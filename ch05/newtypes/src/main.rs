@@ -23,4 +23,10 @@ fn main() {
 
     dbg!(bits.to_bytes());
     dbg!(bytes.to_bits());
+
+    dbg!(bits.to_bytes().to_bits());
+    dbg!(bytes.to_bits().to_bytes());
+
+    dbg!(bits.0);
+    dbg!(bytes.0);
 }

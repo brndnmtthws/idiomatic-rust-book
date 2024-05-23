@@ -38,14 +38,33 @@ fn destructure_tuple(tuple: &(i32, i32, i32)) {
     }
 }
 
-fn match_with_guard(value: i32) {
+fn match_with_guard(value: i32, choose_first: bool) {
     match value {
-        v if v == 1 => println!("This value is equal to 1"),
-        v if v < 10 => println!("This value is less than 10"),
-        _ => println!("This value is at least 10, or less than 1"),
+        v if v == 1 && choose_first => {
+            println!("First match: This value is equal to 1")
+        }
+        v if v == 1 && !choose_first => {
+            println!("Second match: This value is equal to 1")
+        }
+        v if choose_first => {
+            println!("First match: This value is equal to {v}")
+        }
+        v if !choose_first => {
+            println!("Second match: This value is equal to {v}")
+        }
+        _ => println!("Fell through to the default case"),
     }
 }
 
+fn unreachable_pattern_match(value: i32) {
+    match value {
+        1 => println!("First match: This value is equal to 1"),
+        1 => println!("Second match: This value is equal to 1"),
+        _ => println!("This value is not equal to 1"),
+    }
+}
+
+// Does not compile!
 // fn invalid_generic_matching<T>(value: &T) {
 //     match value {
 //         "is a string" => println!("This is a string"),
@@ -157,13 +176,28 @@ fn main() {
 
     destructure_tuple(&(1, 2, 3));
 
-    match_with_guard(1);
-    match_with_guard(2);
-    match_with_guard(42);
+    match_with_guard(1, true);
+    match_with_guard(1, false);
+    match_with_guard(42, true);
+    match_with_guard(42, false);
+
+    unreachable_pattern_match(1);
+    unreachable_pattern_match(10);
 
     match_enum_types(&DistinctTypes::Name("Alice".into()));
     match_enum_types(&DistinctTypes::Name("Bob".into()));
     match_enum_types(&DistinctTypes::Count(10_000));
+
+    let black_cat = Cat {
+        name: String::from("Henry"),
+        colour: CatColour::Black,
+    };
+    let cheshire_cat = Cat {
+        name: String::from("Penelope"),
+        colour: CatColour::Cheshire,
+    };
+    match_on_black_cats(&black_cat);
+    match_on_black_cats(&cheshire_cat);
 
     try_to_write_to_file();
     write_to_file_without_result();

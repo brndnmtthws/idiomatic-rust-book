@@ -14,7 +14,12 @@ fn main() {
     let left_value = || 1;
     let right_value = || 2;
     let adder = |left: fn() -> i32, right: fn() -> i32| left() + right();
-    adder(left_value, right_value); // returns 3
+    println!(
+        "{} + {} = {}",
+        left_value(),
+        right_value(),
+        adder(left_value, right_value)
+    );
 
     let consumable = String::from("cookie");
     let consumer = move || consumable;
