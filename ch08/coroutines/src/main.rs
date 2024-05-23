@@ -1,4 +1,4 @@
-#![feature(coroutines, coroutine_trait)]
+#![feature(coroutines, coroutine_trait, stmt_expr_attributes)]
 
 use core::f64::consts::PI;
 use std::fs::File;
@@ -17,15 +17,18 @@ impl CargoTomlReader {
         let mut reader = BufReader::new(file);
         let mut line_number: usize = 0;
 
-        let coroutine = Box::pin(move || loop {
-            let mut line = String::new();
-            line_number += 1;
-            match reader.read_line(&mut line) {
-                Ok(0) => return,
-                Ok(_) => yield (line_number, line),
-                _ => return,
-            }
-        });
+        let coroutine = Box::pin(
+            #[coroutine]
+            move || loop {
+                let mut line = String::new();
+                line_number += 1;
+                match reader.read_line(&mut line) {
+                    Ok(0) => return,
+                    Ok(_) => yield (line_number, line),
+                    _ => return,
+                }
+            },
+        );
         Ok(Self { coroutine })
     }
 }
@@ -41,7 +44,8 @@ impl Iterator for CargoTomlReader {
 }
 
 fn main() -> io::Result<()> {
-    let mut yield_pi = || {
+    let mut yield_pi = #[coroutine]
+    || {
         yield PI;
         "Coroutine complete!"
     };
