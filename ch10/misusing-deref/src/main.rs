@@ -10,8 +10,19 @@ impl Deref for Person {
     }
 }
 
+impl Person {
+    fn first_name_len(&self) -> usize {
+        self.0.len()
+    }
+}
+
 fn main() {
     let ferris = Person("Ferris".to_string(), "Bueller".to_string(), 17);
     println!("Hello, {}!", *ferris);
     println!("The length of a person is {}", ferris.len());
+
+    println!(
+        "The length of a person's first name is {}",
+        ferris.first_name_len()
+    );
 }
