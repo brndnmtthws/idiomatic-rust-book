@@ -2,8 +2,8 @@
 //!
 //! This crate provides a simple linked list implementation.
 //!
-//! The crates serves as a teaching example for the book [_Rust Design
-//! Patterns_](https://www.manning.com/books/rust-design-patterns).
+//! The crates serves as a teaching example for the book [_Rust Advanced
+//! Techniques_](https://www.manning.com/books/rust-advanced-techniques).
 //!
 //! ## Example usage
 //!
