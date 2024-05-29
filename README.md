@@ -1,8 +1,9 @@
 # Rust Advanced Techniques book code
 
-This repository contains the source code for [_Rust Advanced Techniques_](https://www.manning.com/books/rust-design-patterns).
+This repository contains the source code for [_Rust Advanced Techniques_](https://www.manning.com/books/rust-advanced-techniques).
 
-[![DOTD_NewMEAP_Matthews2](https://github.com/brndnmtthws/rust-design-patterns-book/assets/3129093/cceaa147-ce52-46a0-9676-da62b5691e25)](http://mng.bz/pPDR)
+[<img src="https://github.com/brndnmtthws/rust-advanced-techniques-book/assets/3129093/f6c997eb-f683-48de-a030-96d8698af414" width="500" />](http://mng.bz/pPDR)
+
 
 ## Table of contents
 
@@ -175,3 +176,5 @@ This repository contains the source code for [_Rust Advanced Techniques_](https:
 #### 10.6
 
 * [misusing-deref](ch10/misusing-deref/)
+* [polymorphism-emulation-trait-object](ch10/polymorphism-emulation-trait-object/)
+* [polymorphism-emulation-deref](ch10/polymorphism-emulation-deref/)
