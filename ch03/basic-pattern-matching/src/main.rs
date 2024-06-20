@@ -139,7 +139,7 @@ fn write_to_file() -> Result<(), ErrorWrapper> {
 
 fn try_to_write_to_file() {
     match write_to_file() {
-        Ok(()) => println!("Write succeded"),
+        Ok(()) => println!("Write succeeded"),
         Err(err) => println!("Write failed: {}", err.message),
     }
 }
