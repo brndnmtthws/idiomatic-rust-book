@@ -139,7 +139,7 @@ fn write_to_file() -> Result<(), ErrorWrapper> {
 
 fn try_to_write_to_file() {
     match write_to_file() {
-        Ok(()) => println!("Write suceeded"),
+        Ok(()) => println!("Write succeded"),
         Err(err) => println!("Write failed: {}", err.message),
     }
 }
@@ -154,7 +154,7 @@ fn write_to_file_without_result() {
             Err(err) => {
                 println!("There was an error writing: {}", err)
             }
-            _ => println!("Write suceeded"),
+            _ => println!("Write succeeded"),
         },
         Err(err) => {
             println!("There was an error opening the file: {}", err)
