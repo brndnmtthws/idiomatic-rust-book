@@ -7,7 +7,7 @@ pub struct Bicycle {
     make: String,
     model: String,
     size: i32,
-    colour: String,
+    color: String,
 }
 
 impl Buildable<Bicycle, BicycleBuilder> for Bicycle {
@@ -33,7 +33,7 @@ impl Bicycle {
     accessor!(make, &String);
     accessor!(model, &String);
     accessor!(size, i32);
-    accessor!(colour, &String);
+    accessor!(color, &String);
 }
 
 pub trait Builder<T> {
@@ -65,7 +65,7 @@ impl BicycleBuilder {
     with_str!(make, with_make);
     with_str!(model, with_model);
     with!(size, with_size, i32);
-    with_str!(colour, with_colour);
+    with_str!(color, with_color);
 }
 
 impl Builder<Bicycle> for BicycleBuilder {
@@ -75,7 +75,7 @@ impl Builder<Bicycle> for BicycleBuilder {
                 make: String::new(),
                 model: String::new(),
                 size: 0,
-                colour: String::new(),
+                color: String::new(),
             },
         }
     }
@@ -89,7 +89,7 @@ fn main() {
     bicycle_builder.with_make("Huffy");
     bicycle_builder.with_model("Radio");
     bicycle_builder.with_size(46);
-    bicycle_builder.with_colour("red");
+    bicycle_builder.with_color("red");
     let bicycle = bicycle_builder.build();
     println!("My new bike: {:#?}", bicycle);
 }
