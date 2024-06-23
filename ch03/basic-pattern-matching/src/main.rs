@@ -84,7 +84,7 @@ fn match_enum_types(enum_types: &DistinctTypes) {
     }
 }
 
-enum CatColour {
+enum CatColor {
     Black,
     Red,
     Chocolate,
@@ -96,16 +96,16 @@ enum CatColour {
 
 struct Cat {
     name: String,
-    colour: CatColour,
+    color: CatColor,
 }
 
 fn match_on_black_cats(cat: &Cat) {
     match cat {
         Cat {
             name,
-            colour: CatColour::Black,
+            color: CatColor::Black,
         } => println!("This is a black cat named {name}"),
-        Cat { name, colour: _ } => println!("{name} is not a black cat"),
+        Cat { name, color: _ } => println!("{name} is not a black cat"),
     }
 }
 
@@ -190,11 +190,11 @@ fn main() {
 
     let black_cat = Cat {
         name: String::from("Henry"),
-        colour: CatColour::Black,
+        color: CatColor::Black,
     };
     let cheshire_cat = Cat {
         name: String::from("Penelope"),
-        colour: CatColour::Cheshire,
+        color: CatColor::Cheshire,
     };
     match_on_black_cats(&black_cat);
     match_on_black_cats(&cheshire_cat);
