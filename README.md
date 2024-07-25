@@ -1,6 +1,6 @@
-# Rust Advanced Techniques book code
+# Idiomatic Rust: Code like a Rustacean source code
 
-This repository contains the source code for [_Rust Advanced Techniques_](https://www.manning.com/books/rust-advanced-techniques).
+This repository contains the source code for [_Idiomatic Rust: Code like a Rustacean_](https://www.manning.com/books/rust-advanced-techniques).
 
 [<img src="https://github.com/brndnmtthws/rust-advanced-techniques-book/assets/3129093/f6c997eb-f683-48de-a030-96d8698af414" width="500" />](http://mng.bz/pPDR)
 
