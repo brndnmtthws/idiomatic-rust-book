@@ -178,3 +178,7 @@ This repository contains the source code for [_Idiomatic Rust: Code like a Rusta
 * [misusing-deref](ch10/misusing-deref/)
 * [polymorphism-emulation-trait-object](ch10/polymorphism-emulation-trait-object/)
 * [polymorphism-emulation-deref](ch10/polymorphism-emulation-deref/)
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/brndnmtthws/idiomatic-rust-book.svg)](https://starchart.cc/brndnmtthws/idiomatic-rust-book)
