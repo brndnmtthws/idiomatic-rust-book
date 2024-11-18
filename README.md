@@ -2,8 +2,7 @@
 
 This repository contains the source code for [_Idiomatic Rust: Code like a Rustacean_](https://www.manning.com/books/rust-advanced-techniques).
 
-[<img src="https://github.com/brndnmtthws/rust-advanced-techniques-book/assets/3129093/f6c997eb-f683-48de-a030-96d8698af414" width="500" />](http://mng.bz/pPDR)
-
+[<img src="https://github.com/user-attachments/assets/e78eeb4e-4c02-42cc-ac01-dcb2e775c496" width="500" />](http://mng.bz/pPDR)
 
 ## Table of contents
 
