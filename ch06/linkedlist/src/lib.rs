@@ -2,8 +2,8 @@
 //!
 //! This crate provides a simple linked list implementation.
 //!
-//! The crate serves as a teaching example for the book [_Rust Advanced
-//! Techniques_](https://www.manning.com/books/rust-advanced-techniques).
+//! The crate serves as a teaching example for the book [_Idiomatic
+//! Rust_](https://www.manning.com/books/idiomatic-rust).
 //!
 //! ## Example usage
 //!
