@@ -2,11 +2,11 @@ use lazy_static::lazy_static;
 use once_cell::sync::Lazy;
 use static_init::dynamic;
 use std::cell::OnceCell;
-use std::sync::{Arc, Mutex};
+use std::cell::RefCell;
+use std::rc::Rc;
 
 thread_local! {
-    static POPULAR_BABY_NAMES_2021: Arc<Mutex<Option<Vec<String>>>> =
-        Arc::new(Mutex::new(None));
+    static POPULAR_BABY_NAMES_2021: Rc<RefCell<Vec<String>>> = Rc::new(RefCell::new(Vec::new()));
 }
 
 lazy_static! {
@@ -38,14 +38,15 @@ static POPULAR_BABY_NAMES_2018: Vec<String> = vec![
 ];
 
 fn main() {
-    let arc = POPULAR_BABY_NAMES_2021.with(|arc| arc.clone());
-    let mut inner = arc.lock().expect("unable to lock mutex");
-    *inner = Some(vec![
-        String::from("Olivia"),
-        String::from("Liam"),
-        String::from("Emma"),
-        String::from("Noah"),
-    ]);
+    POPULAR_BABY_NAMES_2021.with(|rc| {
+        rc.borrow_mut().extend([
+            "Olivia".to_string(),
+            "Liam".to_string(),
+            "Emma".to_string(),
+            "Noah".to_string(),
+        ]);
+    });
+
     let popular_baby_names_2017: OnceCell<Vec<String>> = OnceCell::new();
     popular_baby_names_2017.get_or_init(|| {
         vec![
@@ -56,7 +57,8 @@ fn main() {
         ]
     });
 
-    println!("popular baby names of 2021: {:?}", *inner);
+    let names = POPULAR_BABY_NAMES_2021.with(|rc| rc.borrow().clone());
+    println!("popular baby names of 2021: {:?}", names);
 
     println!("popular baby names of 2020: {:?}", *POPULAR_BABY_NAMES_2020);
 
