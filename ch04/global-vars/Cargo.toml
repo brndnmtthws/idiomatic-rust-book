@@ -9,4 +9,4 @@ rust-version = "1.70"
 [dependencies]
 lazy_static = "1.4.0"
 once_cell = "1.18.0"
-static_init = "1.0.3"
+static_init = "1.0.4"
