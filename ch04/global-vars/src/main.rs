@@ -1,8 +1,7 @@
 use lazy_static::lazy_static;
 use once_cell::sync::Lazy;
 use static_init::dynamic;
-use std::cell::OnceCell;
-use std::cell::RefCell;
+use std::cell::{OnceCell, RefCell};
 use std::rc::Rc;
 
 thread_local! {
